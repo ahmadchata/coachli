@@ -14,3 +14,23 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #0080ff;
+  margin-left: 15px;
+}
+
+
+.notification {
+  display: flex;
+  align-items: center;
+}
