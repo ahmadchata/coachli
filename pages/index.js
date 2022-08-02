@@ -1,11 +1,18 @@
 import Head from "next/head";
+import { useState } from "react";
 import Bar from "../components/Bar";
 import styles from "../styles/Home.module.css";
 import DataTable from "../components/Data";
 import styled from "styled-components";
-import TopBar from "../components/TopBar";
+import Overview from "../components/layouts/Overview";
+import ButtonType from "../components/NavButtons";
+import { IoNotifications } from "react-icons/io5";
 
 export default function Home() {
+  const [buttonId, setButtonId] = useState(1);
+  const getButtonId = (e) => {
+    setButtonId(parseInt(e.target.id) + 1);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -15,7 +22,20 @@ export default function Home() {
       </Head>
       <Bar>
         <Main>
-          <TopBar />
+          <div className="topbar">
+            <div>
+              <ButtonType
+                buttons={["Overview", "Guess list", "Temporary traffic"]}
+                getId={getButtonId}
+              />
+            </div>
+            <div className="notification">
+              <p>
+                <IoNotifications />
+              </p>
+              <p className="image"></p>
+            </div>
+          </div>
           <DataTable />
         </Main>
       </Bar>
