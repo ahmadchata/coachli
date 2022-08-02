@@ -2,8 +2,7 @@ import React, { createContext, useReducer } from "react";
 import Reducer from "../reducer/reducer";
 
 const initialState = {
-  login: false,
-  expired: false,
+  open: false,
 };
 
 const Store = ({ children }) => {

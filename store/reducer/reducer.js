@@ -1,13 +1,9 @@
 const Reducer = (state, action) => {
   switch (action.type) {
-    case "login":
-      return { ...state, login: true };
-    case "logout":
-      return { ...state, login: false };
-    case "expired":
-      return { ...state, expired: true };
-    case "restart":
-      return { ...state, expired: false };
+    case "open":
+      return { ...state, open: true };
+    case "close":
+      return { ...state, open: false };
     default:
       throw new Error();
   }

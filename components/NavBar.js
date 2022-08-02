@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useContext } from "react";
 import {
   IoHomeOutline,
   IoWalletOutline,
@@ -9,6 +10,7 @@ import {
 } from "react-icons/io5";
 import { FaAngleDoubleLeft } from "react-icons/fa";
 import styled from "styled-components";
+import { Context } from "../store/Global/GlobalState";
 
 const mainLink = [
   { name: "Dashboard", icon: <IoHomeOutline /> },
@@ -35,9 +37,16 @@ const configLink = [
 const logout = [{ name: "Logout", icon: <IoLogOutOutline /> }];
 
 const NavBar = () => {
+  const [state, dispatch] = useContext(Context);
+
+  const toggleSideBar = () => {
+    state.open ? dispatch({ type: "close" }) : dispatch({ type: "open" });
+    console.log(state.open);
+  };
+
   return (
-    <Nav>
-      <div className={`nav-close`}>
+    <Nav visible={state.open}>
+      <div className={`nav-close`} onClick={toggleSideBar}>
         <span>
           <FaAngleDoubleLeft />
         </span>
@@ -107,7 +116,7 @@ const NavBar = () => {
     </Nav>
   );
 };
-// ${(props) => (props.visible ? "0px" : "-250px")}
+
 export default NavBar;
 
 const Nav = styled.div`
@@ -118,7 +127,7 @@ const Nav = styled.div`
   position: fixed;
   top: 0;
   bottom: 0;
-  margin-left: 0px;
+  margin-left: ${(props) => (props.visible ? "0px" : "-250px")};
   transition: all 300ms ease;
   z-index: 1;
 
@@ -143,12 +152,6 @@ const Nav = styled.div`
       display: inline-block;
       transform: ${(props) => (props.visible ? "" : "rotate(180deg)")};
       transition: transform 300ms 300ms ease;
-    }
-    &.active {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
     }
   }
 
@@ -220,15 +223,6 @@ const LinkContainer = styled.div`
     }
   }
 
-  .selected {
-    background: #f8f7f8;
-    border-radius: 5px;
-  }
-
-  .selected a {
-    color: #0066ff !important;
-  }
-
   @media (max-width: 768px) {
     padding: 0;
 
@@ -240,10 +234,6 @@ const LinkContainer = styled.div`
 
     .link-title {
       padding-left: 30px;
-    }
-
-    .selected {
-      border-radius: 0;
     }
   }
 `;

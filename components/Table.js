@@ -131,12 +131,15 @@ const Table = styled.table`
   }
 
   th {
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
     text-transform: capitalize;
     letter-spacing: 0.1rem;
     font-size: 0.7rem;
     font-weight: 700;
     white-space: nowrap;
+    &:first-child {
+      display: none;
+    }
   }
 
   td {

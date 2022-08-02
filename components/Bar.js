@@ -27,10 +27,10 @@ const Section = styled.div`
 `;
 
 const Main = styled.main`
-  width: ${(props) => (props.visible ? "calc(100% - 251px)" : "100%")};
-  margin-left: ${(props) => (props.visible ? "250px" : "0px")};
+  width: ${(props) => (props.visible ? "calc(100% - 250px)" : "100%")};
+  margin-left: ${(props) => (props.visible ? "250px" : "0")};
   transition: all 300ms ease;
-  padding: 40px;
+  padding-left: 30px;
 
   @media (max-width: 768px) {
     width: 100%;

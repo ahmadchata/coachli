@@ -24,7 +24,7 @@ export default function Name() {
       Cell: ({ cell }) => {
         const p = cell.row.original;
         return (
-          <div className="d-flex">
+          <div>
             {p.status === "Come in" ? (
               <a id={p.id} className="come">
                 Come in
@@ -47,7 +47,7 @@ export default function Name() {
       Cell: ({ cell }) => {
         const p = cell.row.original;
         return (
-          <div className="d-flex">
+          <div>
             <a id={p.id} className="action">
               <IoPencilOutline />
             </a>
@@ -75,10 +75,7 @@ export default function Name() {
           <span>
             <FaSearch className="glass" />
           </span>
-          <input
-            className="input"
-            placeholder="Search name, email, or etc"
-          ></input>
+          <input className="input" placeholder="Search..."></input>
         </div>
       </div>
       <ReactTable columns={columns} data={tableData} defaultPageSize={3} />
@@ -108,12 +105,13 @@ const Section = styled.div`
   .top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .dropdown {
     display: flex;
     align-items-center;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .search {
@@ -134,5 +132,15 @@ const Section = styled.div`
 
   .space {
     margin: 0 8px;
+  }
+  @media (max-width: 768px) {
+    .search {
+      width: 50%;
+      padding: 5px 4px 3px 4px;
+    }
+
+    .input {
+      width: 50%;
+    }
   }
 `;
