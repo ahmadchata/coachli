@@ -166,11 +166,8 @@ const Nav = styled.div`
   @media (max-width: 768px) {
     width: 80%;
     padding: 50px 0;
-    margin-left: ${(props) => (props.visible ? "0px" : "-80%")};
+    margin-left: ${(props) => (props.visible ? "0px" : "-83%")};
     z-index: 9;
-    /* left: -100%; */
-    /* display: none; */
-
     .brand {
       padding-left: 20px;
     }
@@ -187,8 +184,7 @@ const LinkContainer = styled.div`
 
   li {
     list-style: none;
-    margin-bottom: 5px;
-    margin-top: 5px;
+    margin-bottom: 3px 3px;
     cursor: pointer;
     a {
       display: block;

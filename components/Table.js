@@ -68,7 +68,7 @@ export default function ReactTable({ columns, data }) {
       </div>
 
       <TableControls>
-        <div>
+        <div className="mobile-hidden">
           <label className="">
             <span className="small">
               Page <span className="">{state.pageIndex + 1}</span> of{" "}
@@ -94,7 +94,7 @@ export default function ReactTable({ columns, data }) {
           <button onClick={() => previousPage()} disabled={!canPreviousPage}>
             &lt;
           </button>
-          {[1, 2, 3, "...", 230].map((pageSize) => (
+          {[1, "...", 230].map((pageSize) => (
             <span className="page" key={pageSize} value={pageSize}>
               {pageSize}
             </span>
@@ -137,9 +137,6 @@ const Table = styled.table`
     font-size: 0.7rem;
     font-weight: 700;
     white-space: nowrap;
-    &:first-child {
-      display: none;
-    }
   }
 
   td {
@@ -147,6 +144,19 @@ const Table = styled.table`
     white-space: nowrap;
     text-transform: capitalize;
     border-bottom: 1px solid #dfdfdf;
+  }
+
+  @media only screen and (max-width: 768px) {
+    th {
+      &:not(:first-child):not(:last-child) {
+        display: none;
+      }
+    }
+    td {
+      &:not(:first-child):not(:last-child) {
+        display: none;
+      }
+    }
   }
 `;
 
@@ -190,5 +200,10 @@ const TableControls = styled.div`
     border-radius: 5px;
     padding: 10px;
     margin-right: 3px;
+  }
+  @media (max-width: 768px) {
+    .mobile-hidden {
+      display: none;
+    }
   }
 `;

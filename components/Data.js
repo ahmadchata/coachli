@@ -142,5 +142,8 @@ const Section = styled.div`
     .input {
       width: 50%;
     }
+    .dropdown {
+      display: none;
+    }
   }
 `;
